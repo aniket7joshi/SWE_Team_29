@@ -2,8 +2,8 @@
 A project done for the Software Engineering course in IIIT-H.
 
 ## Team Members
-1. Anupam Misra
-2. Aniket Joshi
+1. Aniket Joshi
+2. Anupam Misra
 3. Ramanjaneyulu Payala
 4. Sahil Bakshi
 5. Saurabh Chand
