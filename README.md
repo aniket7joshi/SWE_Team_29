@@ -2,6 +2,13 @@
 A project done for the Software Engineering course in IIIT-H.
 
 ## Team Members
+1. Anupam Misra
+2. Aniket Joshi
+3. Ramanjaneyulu Payala
+4. Sahil Bakshi
+5. Saurabh Chand
+6. Tanmai Khanna
+7. Utsav Agarwal 
 
 ## Problem Statement
 Developing a software for the detection of plagiarism in handwritten or typed documents like reports, essays, written assignments, etc. using NLP for assessing similarity and CV for handwriting recognition
