@@ -27,7 +27,7 @@ For file input plugin:
 * Install bower install bootstrap-fileinput
 
 Running project
-* Clone the repositoy
+* Clone the repository
  
  Run terminal in project root directory
 * Runserver using: python3 manage.py runserver
