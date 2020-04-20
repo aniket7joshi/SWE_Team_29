@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>MOSS | Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'MOSSv2/css/style.css' %}">
+</head>
+<body>
+    {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+            <li>
+                <a href="{% url 'moss:detail' question.id %}">{{question.question_text}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls available</p>
+    {% endif %}
+</body>

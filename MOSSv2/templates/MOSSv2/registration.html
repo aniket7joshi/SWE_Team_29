@@ -1,0 +1,20 @@
+{% extends "MOSSv2/base.html" %}
+{% load static %}
+
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    {% if registered %}
+    <h1>Thank you for registering!</h1>
+    {% else %}
+    <h2>Register Here</h2>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" class="btn btn-submit" name="" value="Register">
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

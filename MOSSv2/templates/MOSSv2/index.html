@@ -1,0 +1,13 @@
+{% extends "MOSSv2/base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    <h2>Welcome to the MOSSv2 !</h2>
+    {% if user.is_authenticated %}
+        <h3>Hello {{ user.username }}</h3>
+    {% else %}
+        <h3>Register or login if you'd like to</h3>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

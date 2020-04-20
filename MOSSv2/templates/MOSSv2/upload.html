@@ -1,0 +1,28 @@
+{% extends "MOSSv2/base.html" %}
+{% block body_block %}
+<div class="container">
+    <div class="jumbotron">
+        <label for="input-folder-2">Upload All Files From Folder</label>
+        <div class="file-loading">
+            <input id="input-folder-2" name="input-folder-2[]" type="file" multiple webkitdirectory accept="image/*">
+        </div>
+        <div id="errorBlock" class="help-block"></div>
+        <label for="documentType">Upload All Files From Folder</label>
+        <div class="radio">
+            <label for="documentType1" class="radio-inline"><input type="radio" id="documentType1" name="documentType">Handwritten Documents </label>
+          </div>
+          <div class="radio">
+            <label for="documentType2" class ="radio-inline"><input type="radio" id="documentType2" name="documentType">Typed Documents</label>
+          </div>
+        <script>
+            $(document).ready(function () {
+                $("#input-folder-2").fileinput({
+                    browseLabel: 'Select Folder...',
+                    uploadUrl: "/file-upload-batch/2",
+                    hideThumbnailContent: true // hide image, pdf, text or other content in the thumbnail preview
+                });
+            });
+        </script>
+    </div>
+</div>
+{% endblock %}
