@@ -71,9 +71,19 @@ def user_login(request):
             else:
                 return HttpResponse("Your account was inactive.")
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username, password))
-            return HttpResponse("Invalid login details given")
+            print("Invalid username: {} or password: {}".format(username, password))
+            return render(request, "MOSSv2/login.html", {"username":username, 
+            "password":password,
+            "title": "Login",
+            "error_msg" : "Invalid login details"})
     else:
         return render(request, "MOSSv2/login.html", {"title": "Login"})
 
+@login_required
+def upload_files(request):
+    if request.method == "POST":
+        file_list = [x.name for x in request.FILES.getlist('file')]
+        print(f'{len(file_list)} files received.')
+    return render(request, "MOSSv2/upload.html", {"msg":"Files Uploaded",
+    "title": "Upload",
+    "file_list": file_list})

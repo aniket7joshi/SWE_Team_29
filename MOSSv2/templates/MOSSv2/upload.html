@@ -1,28 +1,30 @@
 {% extends "MOSSv2/base.html" %}
+{% load static %}
 {% block body_block %}
-<div class="container">
+<div class="container"> 
     <div class="jumbotron">
-        <label for="input-folder-2">Upload All Files From Folder</label>
-        <div class="file-loading">
-            <input id="input-folder-2" name="input-folder-2[]" type="file" multiple webkitdirectory accept="image/*">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                  <form enctype = "multipart/form-data" action="{% url 'moss:upload_files' %}" method="post">
+                    {% csrf_token %}  
+                    <div class="form-group files">
+                        <label for="file-upload">Upload Your Files</label>
+                        <input type="file" name="file" id= "file-upload" class="form-control"  webkitdirectory directory multiple>
+                    </div>
+                    <input type="submit" class="btn btn-submit" value="Upload">
+                  </form>
+              </div>
+            </div>
         </div>
-        <div id="errorBlock" class="help-block"></div>
-        <label for="documentType">Upload All Files From Folder</label>
-        <div class="radio">
-            <label for="documentType1" class="radio-inline"><input type="radio" id="documentType1" name="documentType">Handwritten Documents </label>
-          </div>
-          <div class="radio">
-            <label for="documentType2" class ="radio-inline"><input type="radio" id="documentType2" name="documentType">Typed Documents</label>
-          </div>
-        <script>
-            $(document).ready(function () {
-                $("#input-folder-2").fileinput({
-                    browseLabel: 'Select Folder...',
-                    uploadUrl: "/file-upload-batch/2",
-                    hideThumbnailContent: true // hide image, pdf, text or other content in the thumbnail preview
-                });
-            });
-        </script>
+        {% if msg%}
+            <span>{{msg}}</span>
+            <ul>
+                {% for file in file_list %}
+                    <li>{{ file }}</li>
+                {% endfor %}
+            </ul>
+        {%endif%}
     </div>
-</div>
+</div>   
 {% endblock %}

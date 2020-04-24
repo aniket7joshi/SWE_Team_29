@@ -21,11 +21,6 @@ Plagiarism is an unethical activity that is not trivial to detect due to the hig
 Framework:
 * Install django : pip3 install django
 
-For file input plugin:
-* Install npm : sudo apt install npm
-* Install bower: sudo npm install -g bower
-* Install bower install bootstrap-fileinput
-
 Running project
 * Clone the repository
  

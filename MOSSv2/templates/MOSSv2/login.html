@@ -2,13 +2,16 @@
 {% block body_block %}
   <div class="container">
     <div class="jumbotron">
+      {% if error_msg %}
+        <span>{{ error_msg }}</span>
+      {% endif %}
       <h2>Login here :</h2>
       <form method="post" action="{% url 'moss:user_login' %}">
         {% csrf_token %}
         <label for="username">Username:</label>
-        <input type="text" id="username" class="form-control" name="username" placeholder="Enter username">
+        <input type="text" id="username" class="form-control" name="username" placeholder="Enter username" value = "{{username}}">
         <label for="password">Password:</label>
-        <input type="password" id="password" class="form-control" name="password" placeholder="Password">
+        <input type="password" id="password" class="form-control" name="password" placeholder="Password" value = "{{password}}">
         <input type="submit" class="btn btn-submit" name="" value="Login">
       </form>
     </div>
