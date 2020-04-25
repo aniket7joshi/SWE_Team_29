@@ -83,7 +83,7 @@ def user_login(request):
 def upload_files(request):
     if request.method == "POST":
         file_list = [x.name for x in request.FILES.getlist('file')]
-        print(f'{len(file_list)} files received.')
+        print("{} files received.".format(len(file_list)))
     return render(request, "MOSSv2/upload.html", {"msg":"Files Uploaded",
     "title": "Upload",
     "file_list": file_list})
