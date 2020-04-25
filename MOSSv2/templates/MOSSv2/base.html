@@ -1,18 +1,380 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>MOSSv2 | {{title}}</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  {%load static%}
+  <!-- Favicons -->
+  <link href="{% static 'MOSSv2/img/favicon.ico' %}" rel="icon">
+  <link href="{%static 'MOSSv2/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+   <!-- Vendor CSS Files -->
+   <link href="{% static 'MOSSv2/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+   <link href="{% static 'MOSSv2/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+   <link href="{%static 'MOSSv2/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+   <link href="{% static 'MOSSv2/vendor/venobox/venobox.css' %}" rel="stylesheet">
+   <link href="{% static 'MOSSv2/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+   <link href="{% static 'MOSSv2/vendor/aos/aos.css' %}" rel="stylesheet">
+ 
+   <!-- Template Main CSS File -->
+   <link href="{% static 'MOSSv2/css/style.css' %}" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'MOSSv2/css/upload.css' %}">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>  -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js" integrity="sha256-Cr6N6zNN4bp0OwTQOZ6Z66M2r+2dpy/EwKMCyZ+SOMg=" crossorigin="anonymous"></script> -->
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-static-top">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="{% url 'moss:index' %}"><span>MOSSv2</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="{% url 'moss:register' %}">Register</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="{% url 'admin:index'%}">Admin Panel</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="#">Hello, {{ user.username }}</a></li>
+          <li><a href="{% url 'moss:logout' %}">Logout</a></li>
+          <li><a href="{% url 'moss:upload' %}">Upload</a></li>
+          {% else %}
+          <li><a class="navbar-link" href="{% url 'moss:user_login' %}">Login</a></li>
+          {% endif %}
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+  <section id="hero">
+    <div class="hero-container">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+  </section>
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="services">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>About</h2>
+          <p>The application aims for the detection of plagiarism in handwritten or typed documents
+            like reports, essays, written assignments, etc. using NLP for assessing similarity and CV for
+            handwriting recognition. The application checks for plagiarism on several levels:</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+              <div class="icon"><i class="bx bxs-copy-alt"></i></div>
+              <h4 class="title"><a href="">Exact matches between pairs, creating clusters</a></h4>
+              <p class="description">Checks for exactly matching strings in uploaded documents</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">Fuzzy matches between pairs</a></h4>
+              <p class="description">Approximate matching between documents, i.e having high similarity</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bx bx-file-find"></i></div>
+              <h4 class="title"><a href="">Synonym matches using WordNet</a></h4>
+              <p class="description">Matching between document strings using synonyms of words</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="bx bxs-file-find"></i></div>
+              <h4 class="title"><a href="">Experimental text similarity using pre-trained NLP models</a></h4>
+              <p class="description">Using pre-trained models to find similar documents</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Team</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Aniket Joshi</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="150">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Anupam Misra</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Ramanjaneyulu Payala</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sahil Bakshi</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Saurabh Chand</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="150">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Tanmai Khanna</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="pic"><img src="{% static 'MOSSv2/img/team/blank.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Utsav Agrawal</h4>
+                <span>Developer</span>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Team Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Contact</h2>
+          <p>For any queries or assistance related to the application, feel free to reach us out on:</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+91 9876543210</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="info-box mb-6">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>moss_v2@gmail.com</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-6 ">
+            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.3114333137573!2d78.34757171487713!3d17.4448018880442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bce0a03f17ff82b%3A0x9d02e89b98deb496!2sIIIT%20Hyderabad!5e0!3m2!1sen!2sin!4v1587820025918!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info" data-aos="fade-up" data-aos-delay="50">
+              <h3>MOSSv2</h3>
+              <p class="pb-3"><em>A project done for the Software Engineering course in IIIT-H</em></p>
+              <p>
+                IIIT Hyderabad<br>
+                Gachibowli, Hyd<br><br>
+                <strong>Phone:</strong> +91 9876543210<br>
+                <strong>Email:</strong> moss_v2@gmail.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="150">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'MOSSv2/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'MOSSv2/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'MOSSv2/js/main.js' %}"></script>
+
+  <!-- <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <ul class="nav navbar-nav">
         <li><a class="navbar-brand" href="{% url 'moss:index' %}">MOSSv2</a></li>
@@ -27,10 +389,6 @@
         {% endif %}
       </ul>
     </div>
-  </nav>
-  <div class="container">
-    {% block body_block %}
-    {% endblock %}
-  </div>
+  </nav> -->
 </body>
 </html>
