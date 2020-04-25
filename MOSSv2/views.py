@@ -67,7 +67,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse("moss:index"))
+                return HttpResponseRedirect(reverse("moss:user_login"))
             else:
                 return HttpResponse("Your account was inactive.")
         else:

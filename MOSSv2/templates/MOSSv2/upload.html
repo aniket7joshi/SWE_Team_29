@@ -1,32 +1,33 @@
 {% extends "MOSSv2/base.html" %}
 {% load static %}
 {% block body_block %}
-<div class="container"> 
-    <div class="">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                  <form enctype = "multipart/form-data" action="{% url 'moss:upload_files' %}" method="post">
-                    {% csrf_token %}  
-                    <div class="form-group files">
-                        <label for="file-upload">Upload Your Files</label>
-                        <input type="file" name="file" id= "file-upload" class="form-control"  webkitdirectory directory multiple>
-                    </div>
-                    <input type="submit" class="btn btn-submit" value="Upload">
-                  </form>
-              </div>
-            </div>
-        </div>
+<section data-aos="fade-up" data-aos-delay="100" style="background-color: whitesmoke; border-radius: 5px; width: 30%;">
+    {% if msg %}
+    <div style="color: green; font-family: 'Poppins', sans-serif;">{{msg}}</div>
+        {% if file_list %}
         <div class = "" style="height: 100px; overflow-y: scroll;">
-        {% if msg%}
-            <span>{{msg}}</span>
             <ul>
                 {% for file in file_list %}
                     <li>{{ file }}</li>
                 {% endfor %}
             </ul>
-        {%endif%}
         </div>
+        {% endif%}
+    {% else %}
+    <h3 style="padding-bottom:10%; font-weight: 600; font-family: 'Poppins', sans-serif;">Upload Files</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
+            <form enctype = "multipart/form-data" action="{% url 'moss:upload_files' %}" method="post">
+                {% csrf_token %}  
+                <div class="form-group files">
+                    <input type="file" name="file" id= "file-upload" class="form-control"  webkitdirectory directory multiple>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Upload">
+              </form>
+        </div>
+      </div>
     </div>
-</div>   
+{% endif %}
+</section>
 {% endblock %}

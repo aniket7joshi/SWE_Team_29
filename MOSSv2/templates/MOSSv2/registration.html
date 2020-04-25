@@ -1,20 +1,32 @@
 {% extends "MOSSv2/base.html" %}
-{% load static %}
-
 {% block body_block %}
-<div class="container">
-  <div class="">
-    {% if registered %}
-    <h1>Thank you for registering!</h1>
-    {% else %}
-    <h2>Register Here</h2>
-    <form enctype="multipart/form-data" method="POST">
-      {% csrf_token %}
-      {{ user_form.as_p }}
-      {{ profile_form.as_p }}
-      <input type="submit" class="btn btn-submit" name="" value="Register">
-    </form>
-    {% endif %}
-  </div>
+<section data-aos="fade-up" data-aos-delay="100" style="background-color: whitesmoke; border-radius: 5px; width: 35%;">
+<h3 style="padding-bottom:10%; font-weight: 600; font-family: 'Poppins', sans-serif;">Register here</h3>
+{% if registered %}
+<div style="color: green; font-family: 'Poppins', sans-serif;">Thank you for registering!</div>
+{% else %}
+<!-- {% if user_form.non_field_errors or user_form.username.errors%}
+<div style="color: red; font-family: 'Poppins', sans-serif;">
+<ul style="text-decoration: none;">
+  <li>{{ user_form.non_field_errors }}</li>
+  <li>{{ user_form.username.errors }}</li>
+</ul>
 </div>
+{%endif%} -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0">
+      <form enctype="multipart/form-data" method="post" style="width: 100%;">
+        {% csrf_token %}
+        <table border="0">
+        {{ user_form.as_table }}
+        {{ profile_form.as_table }}
+        </table>
+      <input type="submit" style="margin-top: 5%;" class="btn btn-primary" name="" value="Register">
+      </form>
+    </div>
+  </div>
+  </div>
+  {% endif %}
+</section>
 {% endblock %}
