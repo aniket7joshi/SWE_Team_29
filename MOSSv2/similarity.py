@@ -3,6 +3,7 @@ from gensim import corpora
 from gensim import models
 from gensim import similarities
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import SpectralClustering
 import os
 
 
@@ -49,10 +50,7 @@ def check_gensim_similarity(file_list):
 	sims = index[vec_lsi]
 	sims = sorted(enumerate(sims), key=lambda item: -item[1])
 	for i, s in enumerate(sims):
-		# print(i,s)
 		print(s, documents[s[0]])
-
-
 
 
 def tf_idf_cosine_distance(file_list):
@@ -60,3 +58,11 @@ def tf_idf_cosine_distance(file_list):
 	tfidf = TfidfVectorizer().fit_transform(documents)
 	pairwise_similarity = tfidf * tfidf.T
 	print(pairwise_similarity)
+	no_of_files = len(file_list)
+	cluster_documents(pairwise_similarity,no_of_files)
+
+def cluster_documents(pairwise_similarity,no_of_files):
+
+	scmodel = SpectralClustering(n_clusters=no_of_files - 1 , affinity='precomputed')
+	clusters = scmodel.fit_predict(pairwise_similarity)
+	print(clusters)
