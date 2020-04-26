@@ -81,6 +81,7 @@ def user_login(request):
 
 @login_required
 def upload_files(request):
+
 	if request.method == "POST":
 		file_list = [x.name for x in request.FILES.getlist('file')]
 		files = request.FILES.getlist('file')
