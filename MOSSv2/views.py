@@ -4,7 +4,7 @@ from django.urls import reverse
 from .forms import UserForm, UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from . import similarity
 
 def index(request):
     return render(request, "MOSSv2/index.html", {"title": "Home"})
@@ -83,7 +83,10 @@ def user_login(request):
 def upload_files(request):
     if request.method == "POST":
         file_list = [x.name for x in request.FILES.getlist('file')]
+        files = request.FILES.getlist('file')
         print("{} files received.".format(len(file_list)))
+        similarity_matrix = similarity.check_gensim_similarity(files)
+
     return render(request, "MOSSv2/upload.html", {"msg":"Files Uploaded",
     "title": "Upload",
     "file_list": file_list})
