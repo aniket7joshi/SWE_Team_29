@@ -2,26 +2,29 @@ from collections import defaultdict
 from gensim import corpora
 from gensim import models
 from gensim import similarities
+from sklearn.feature_extraction.text import TfidfVectorizer
 import os
 
-def check_gensim_similarity(file_list):
 
+def read_files(file_list):
 	documents = []
-	'''Add similarities for all pairs in this matrix and return'''
-	similarity_matrix = defaultdict()
-	
+
 	stoplist = set('for a of the and to in'.split())
 	for files in file_list:
 		
 		file_content = str(files.read().decode())
 		documents.append(file_content)
-		files.close()
-
 	texts = [
 		[word for word in document.lower().split() if word not in stoplist]
 		for document in documents
 	]
 
+	return documents,texts
+def check_gensim_similarity(file_list):
+
+	'''Add similarities for all pairs in this matrix and return'''
+	similarity_matrix = defaultdict()
+	documents , texts = read_files(file_list)
 	
 	frequency = defaultdict(int)
 	for text in texts:
@@ -48,3 +51,12 @@ def check_gensim_similarity(file_list):
 	for i, s in enumerate(sims):
 		# print(i,s)
 		print(s, documents[s[0]])
+
+
+
+
+def tf_idf_cosine_distance(file_list):
+	documents,_ = read_files(file_list)
+	tfidf = TfidfVectorizer().fit_transform(documents)
+	pairwise_similarity = tfidf * tfidf.T
+	print(pairwise_similarity)
