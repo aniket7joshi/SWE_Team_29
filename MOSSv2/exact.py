@@ -232,10 +232,10 @@ def percentage_calc(common_words,src_content,doc_content):
 
 def main():
 	
-	with open('c.txt','r') as file:
+	with open('a.txt','r') as file:
 		src_content=file.read()
 		#print(src_content)
-	with open('d.txt','r') as file:
+	with open('b.txt','r') as file:
 		input_content=file.read()
 		#print(input_content)
 	detector(src_content.upper(),input_content.upper())
