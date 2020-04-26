@@ -85,6 +85,7 @@ def upload_files(request):
         file_list = [x.name for x in request.FILES.getlist('file')]
         files = request.FILES.getlist('file')
         print("{} files received.".format(len(file_list)))
+        print("Document type: ", request.POST.get('documentType'))
         # gensim_similarity_matrix = similarity.check_gensim_similarity(files)
         tf_idf_matrix = similarity.tf_idf_cosine_distance(files)
     return render(request, "MOSSv2/upload.html", {"msg":"Files Uploaded",
