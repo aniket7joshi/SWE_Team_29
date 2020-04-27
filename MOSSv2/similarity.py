@@ -60,7 +60,6 @@ def check_gensim_similarity(file_list):
 		allsimilarities.append(similarity_particular)
 
 	# text_difference(documents)
-	sentence_checker(documents[1],documents[1])
 	return allsimilarities
 def read_files1(file_list):
 	documents = []
@@ -120,8 +119,8 @@ def sentence_checker(document1,document2):
 	doc1 = tfidf_transformer.fit_transform(document1)
 	doc2 = tfidf_transformer.transform(document2)
 	cosineSimilarities = cosine_similarity(doc1,doc2)
-	print("This is cosine similarity \n")
-	print(cosineSimilarities)
+	# print("This is cosine similarity \n")
+	# print(cosineSimilarities)
 
 	for index in range(len(document1)):
 		for index1 in range(len(document2)):
@@ -141,3 +140,12 @@ def text_difference(file_list):
 			arr = [x for x in diff]
 			for x in arr:
 				print(x)
+
+def check_each_sentence(file_list):
+	documents,_= read_files1(file_list)
+	for k in range(len(documents)):
+		doc = documents[k]
+		for i in range(len(documents)):
+			print(file_list[k], file_list[i])
+			doc_a = documents[i]
+			sentence_checker(doc, doc_a)
