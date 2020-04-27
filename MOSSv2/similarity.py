@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import SpectralClustering
 import os
 import spacy
+import difflib
 
 def read_files(file_list):
 	documents = []
@@ -54,6 +55,8 @@ def check_gensim_similarity(file_list):
 		for i, s in enumerate(sims):
 			similarity_particular.append(s)
 		allsimilarities.append(similarity_particular)
+
+	text_difference(documents)
 	return allsimilarities
 def read_files1(file_list):
 	documents = []
@@ -101,3 +104,12 @@ def cluster_documents(pairwise_similarity,no_of_files):
 	scmodel = SpectralClustering(n_clusters=no_of_files - 1 , affinity='precomputed')
 	clusters = scmodel.fit_predict(pairwise_similarity)
 	# print(clusters)
+
+
+
+def text_difference(documents):
+	
+	diff = difflib.ndiff(documents[0].split('\n'), documents[1].split('\n'))
+	arr = [x for x in diff]
+	for x in arr:
+		print(x)
