@@ -19,4 +19,5 @@ from django.urls import include, path
 urlpatterns = [
     path('moss/', include('MOSSv2.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/',include('allauth.urls')),
 ]
