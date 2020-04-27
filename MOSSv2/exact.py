@@ -223,10 +223,13 @@ def percentage_calc(common_words,src_content,doc_content):
 	doc_size=len(doc_word)
 
 	d = len(common_words)
-	plagPercent = (d/float(doc_size)) * 100
-
-	print("Plagiarism Percentage in input file :",end=' ')
-	print(str(plagPercent)+"%")
+	plagPercent1 = (d/float(src_size)) * 100
+	plagPercent2 = (d/float(doc_size)) * 100
+	
+	print("Percentage matched in source file :",end=' ')
+	print(str(plagPercent1)+"%")
+	print("Percentage matched in input file :",end=' ')
+	print(str(plagPercent2)+"%")
 
 
 
