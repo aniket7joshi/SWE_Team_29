@@ -3,9 +3,12 @@ from gensim import corpora
 from gensim import models
 from gensim import similarities
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.cluster import SpectralClustering
 import os
 import spacy
+import nltk
 import difflib
 
 def read_files(file_list):
@@ -56,7 +59,8 @@ def check_gensim_similarity(file_list):
 			similarity_particular.append(s)
 		allsimilarities.append(similarity_particular)
 
-	text_difference(documents)
+	# text_difference(documents)
+	sentence_checker(documents[1],documents[1])
 	return allsimilarities
 def read_files1(file_list):
 	documents = []
@@ -75,6 +79,7 @@ def read_files1(file_list):
 	]
 
 	return documents,texts
+
 def spacy_similarity(file_list):
 	nlp = spacy.load('en_core_web_sm')
 	documents,_= read_files1(file_list)
@@ -113,3 +118,21 @@ def text_difference(documents):
 	arr = [x for x in diff]
 	for x in arr:
 		print(x)
+
+
+def sentence_checker(document1,document2):
+	document1 = nltk.tokenize.sent_tokenize(document1)
+	document2 = nltk.tokenize.sent_tokenize(document2)
+	tfidf_transformer = TfidfVectorizer()
+	doc1 = tfidf_transformer.fit_transform(document1)
+	doc2 = tfidf_transformer.transform(document2)
+	cosineSimilarities = cosine_similarity(doc1,doc2)
+	print("This is cosine similarity \n")
+	print(cosineSimilarities)
+
+	for index in range(len(document1)):
+		for index1 in range(len(document2)):
+			if cosineSimilarities[index][index1] >= 0.7:
+				print("The two matching sentences are \n")
+				print("Sentence 1 : ",document1[index])
+				print("Sentence 2 : ",document2[index])
