@@ -112,13 +112,6 @@ def cluster_documents(pairwise_similarity,no_of_files):
 
 
 
-def text_difference(documents):
-	
-	diff = difflib.ndiff(documents[0].split('\n'), documents[1].split('\n'))
-	arr = [x for x in diff]
-	for x in arr:
-		print(x)
-
 
 def sentence_checker(document1,document2):
 	document1 = nltk.tokenize.sent_tokenize(document1)
@@ -136,3 +129,15 @@ def sentence_checker(document1,document2):
 				print("The two matching sentences are \n")
 				print("Sentence 1 : ",document1[index])
 				print("Sentence 2 : ",document2[index])
+
+def text_difference(file_list):
+	documents,_= read_files1(file_list)
+	for k in range(len(documents)):
+		doc = documents[k]
+		for i in range(len(documents)):
+			print(file_list[k], file_list[i])
+			doc_a = documents[i]
+			diff = difflib.ndiff(doc.split('\n'), doc_a.split('\n'))
+			arr = [x for x in diff]
+			for x in arr:
+				print(x)

@@ -1,8 +1,9 @@
-from bloom_filter import *
-from aho import *
+from . import bloom_filter
+from . import aho
 from collections import deque
 import ahocorasick as ahc
 import math
+global prime_nos,phrases,word_code,input_phrases,input_phrases_idx
 global prime_nos,phrases,word_code,input_phrases,input_phrases_idx
 prime_nos=(113,117,119,123,129,131,137)
 phrases=[]
@@ -11,7 +12,7 @@ input_phrases=[]
 input_phrases_idx=[]
 
 def detector(patt_file,input_file):
-	f=bloom_filter(10000007)
+	f=bloom_filter.bloom_filter(10000007)
 	input_code=deque()
 
 	phrases,word_code=convertPhrases(patt_file)
@@ -152,7 +153,7 @@ def filter_word(patterns,word_code,f):
 
 def exactMatching(input_phrases,patterns):
 	k=[]
-	A=ahoh()
+	A=aho.ahoh()
 	line=' '.join(input_phrases)
 
 	k=len(patterns)
@@ -198,6 +199,8 @@ def calc_plag(input_phrases,input_phrases_idx):
 
 	#for i in range(len(list2)):
 		#print(i+1,":",list2[i],".")
+
+	#print(commonwords)
 	return commonwords
 
 
@@ -225,26 +228,38 @@ def percentage_calc(common_words,src_content,doc_content):
 	d = len(common_words)
 	plagPercent1 = (d/float(src_size)) * 100
 	plagPercent2 = (d/float(doc_size)) * 100
-	
+
 	print("Percentage matched in source file :",end=' ')
 	print(str(plagPercent1)+"%")
 	print("Percentage matched in input file :",end=' ')
 	print(str(plagPercent2)+"%")
 
 
-
-def main():
-	
-	with open('a.txt','r') as file:
+def input_all(file1, file2):
+	filepath1 = './tests/' + file1
+	with open(filepath1, 'r') as file:
 		src_content=file.read()
-		#print(src_content)
-	with open('b.txt','r') as file:
-		input_content=file.read()
-		#print(input_content)
+	filepath2 = './tests/' + file2
+	with open(filepath2, 'r') as file3:
+		input_content=file3.read()
 	detector(src_content.upper(),input_content.upper())
 
 
-if __name__ == '__main__':
-	main()
+# def main():
+	
+# 	with open('../tests/a.txt','r') as file:
+# 		src_content=file.read()
+# 		#print(src_content)
+# 	with open('../tests/c.txt','r') as file:
+# 		input_content=file.read()
+# 		#print(input_content)
+# 	detector(src_content.upper(),input_content.upper())
+# file_list = ['a.txt','b.txt', 'e.txt', 'd.txt', 'c.txt']
+# for i in range(len(file_list)):
+# 	for j in range(len(file_list)):
+# 		print(file_list[i],file_list[j])
+# 		input_all(file_list[i],file_list[j])
+# if __name__ == '__main__':
+# 	main()
 
 

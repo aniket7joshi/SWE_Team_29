@@ -4,7 +4,7 @@ from django.urls import reverse
 from .forms import UserForm, UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from . import similarity
+from . import similarity, exact, bloom_filter, aho, fuzzy
 import numpy as np
 def index(request):
 	return render(request, "MOSSv2/index.html", {"title": "Home"})
@@ -106,6 +106,16 @@ def upload_files(request):
 		print(tf_idf_matrix)
 		spacy_similarity = similarity.spacy_similarity(file_list)
 		print(np.array(spacy_similarity))
+		all_fuzzy_scores = []
+		for i in range(len(file_list)):
+			curr_fuzzy = []
+			for j in range(len(file_list)):
+				# print(file_list[i],file_list[j])
+				# exact.input_all(file_list[i],file_list[j])
+				curr_fuzzy.append(fuzzy.input_all(file_list[i], file_list[j]))
+			all_fuzzy_scores.append(curr_fuzzy)
+		print(np.array(all_fuzzy_scores))
+		# similarity.text_difference(file_list)		
 	return render(request, "MOSSv2/upload.html", {"msg":"Files Uploaded",
 	"title": "Upload",
 	"file_list": file_list})

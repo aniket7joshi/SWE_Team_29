@@ -34,14 +34,23 @@ def tagged_to_synset(word, tag):
 	except:
 		return None
 
-def main():
 
-	with open('c.txt','r') as file:
+def input_all(file1, file2):
+	filepath1 = './tests/' + file1
+	with open(filepath1, 'r') as file:
 		src_content=file.read()
-		#print(src_content)
-	with open('d.txt','r') as file:
-		input_content=file.read()
-		#print(input_content)
+	filepath2 = './tests/' + file2
+	with open(filepath2, 'r') as file3:
+		input_content=file3.read()
+	# detector(src_content.upper(),input_content.upper())
+
+
+	# with open('../tests/c.txt','r') as file:
+	# 	src_content=file.read()
+	# 	#print(src_content)
+	# with open('../tests/dt.xt','r') as file:
+	# 	input_content=file.read()
+	# 	#print(input_content)
 
 	#print(src_content,input_content)
 	stop_words1 = set(stopwords.words('english'))
@@ -80,9 +89,9 @@ def main():
 	#print(Partial_Ratio)
 	#print("Token Sort Ratio: ",end=' ')
 	#print(Token_Sort_Ratio)
-	print("Fuzzy match score: ",end=' ')
-	print(Token_Set_Ratio)
-
+	# print("Fuzzy match score: ",end=' ')
+	# print(Token_Set_Ratio)
+	return Token_Set_Ratio
 	#POStagging
 	sentence1 = pos_tag(word_tokenize(src_content_final))
 	sentence2 = pos_tag(word_tokenize(input_content_final))
@@ -90,14 +99,14 @@ def main():
 	#print(sentence1)
 
 	#print(wordnet.synset('Wonderful','j'))
- 
+
 	# Get the synsets for the tagged words
 	synsets1 = [tagged_to_synset(*tagged_word) for tagged_word in sentence1]
 	synsets2 = [tagged_to_synset(*tagged_word) for tagged_word in sentence2]
 
 	synsets1 = [ss for ss in synsets1 if ss]
 	synsets2 = [ss for ss in synsets2 if ss]
-	
+
 	#print(synsets1)
 	#print(synsets2)
 
@@ -116,8 +125,6 @@ def main():
 	if count == 0:
 		return 0
 	score /= count
-	print("Semantic synset similarity score: ",end=' ')
-	print(score)
-
-if __name__ == '__main__':
-	main()
+	# print("Semantic synset similarity score: ",end=' ')
+	# print(score)
+	
