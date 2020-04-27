@@ -1,18 +1,94 @@
 {% extends "MOSSv2/base.html" %}
-{% load static %}
+{% load index %}
 {% block body_block %}
-<section data-aos="fade-up" data-aos-delay="100" style="background-color: whitesmoke; border-radius: 5px; width: 30%;">
+<section data-aos="fade-up" data-aos-delay="100" style="background-color: whitesmoke; border-radius: 5px; max-width: 80%; z-index: 10; max-height: 500px; overflow-y: scroll;">
     {% if msg %}
     <div style="color: green; font-family: 'Poppins', sans-serif;">{{msg}}</div>
-        {% if file_list %}
-        <div class = "" style="height: 100px; overflow-y: scroll;">
-            <ul>
-                {% for file in file_list %}
-                    <li>{{ file }}</li>
-                {% endfor %}
-            </ul>
+        <div class = "">
+          <div class="table table-condensed"> 
+            <h3 style="font-family: 'Poppins', sans-serif;"> Genism</h3> 
+            <table>
+                <tr>
+                  <th></th>
+                  {%for file in file_list%}
+                    <th>{{file}}</th>
+                  {%endfor%}
+                </tr>
+                {% for row in genism_mat%}
+                  <tr>
+                    <th>{{ file_list|index:forloop.counter0 }}</th>
+                  {% for val in row%}
+                  <td>{{val}}</td>
+                  {%endfor%}
+                </tr>
+                {%endfor%}
+              </table>
+          </div>
+          <div class="table table-condensed">  
+            <table>
+              <h3 style="font-family: 'Poppins', sans-serif;">TFIDF</h3>
+                <tr>
+                  <th></th>
+                  {%for file in file_list%}
+                    <th>{{file}}</th>
+                  {%endfor%}
+                </tr>
+                {% for row in tfidf_mat%}
+                  <tr>
+                    <th>{{ file_list|index:forloop.counter0 }}</th>
+                  {% for val in row%}
+                  <td>{{val}}</td>
+                  {%endfor%}
+                </tr>
+                {%endfor%}
+              </table>
+          </div>
+          <div class="table table-condensed">  
+            <table>
+              <h3 style="font-family: 'Poppins', sans-serif;">Spacy</h3>
+                <tr>
+                  <th></th>
+                  {%for file in file_list%}
+                    <th>{{file}}</th>
+                  {%endfor%}
+                </tr>
+                {% for row in spacy_mat%}
+                  <tr>
+                    <th>{{ file_list|index:forloop.counter0 }}</th>
+                  {% for val in row%}
+                  <td>{{val}}</td>
+                  {%endfor%}
+                </tr>
+                {%endfor%}
+              </table>
+          </div>
+          <div class="table table-condensed">  
+            <table>
+              <h3 style="font-family: 'Poppins', sans-serif;">Fuzzy</h3>
+                <tr>
+                  <th></th>
+                  {%for file in file_list%}
+                    <th>{{file}}</th>
+                  {%endfor%}
+                </tr>
+                {% for row in fuzzy_mat%}
+                  <tr>
+                    <th>{{ file_list|index:forloop.counter0 }}</th>
+                  {% for val in row%}
+                  <td>{{val}}</td>
+                  {%endfor%}
+                </tr>
+                {%endfor%}
+              </table>
+          </div>
         </div>
-        {% endif%}
+        <div class="row" style="margin-bottom: 5%;">
+          <div class=" col-lg-12 form-check">
+            <label for="customRange">Threshold</label>
+            <input type="range" class="custom-range" name="threshold" id="customRange">
+            <div id="result">Current Value: <b></b></div>
+          </div>
+        </div>
     {% else %}
     <h3 style="padding-bottom:10%; font-weight: 600; font-family: 'Poppins', sans-serif;">Upload Files</h3>
     <div class="container">
@@ -23,25 +99,33 @@
                 <div class="form-group files">
                     <input type="file" name="file" id= "file-upload" class="form-control"  webkitdirectory directory multiple>
                 </div>
-            <div class="row" style="margin-bottom: 5%;">
-                <div class="col-lg-4 form-check">
+            <!-- <div class="row" style="margin-bottom: 5%;">
+                <div class="col-lg-6 form-check">
                   <input class="form-check-input" type="radio" id="typed" name="documentType"  value="Typed" checked>
                   <label class="form-check-label" for="typed">
                     Typed
                   </label>
                 </div>
-                <div class=" col-lg-4 form-check">
+                <div class=" col-lg-6 form-check">
                     <input class="form-check-input" type="radio" name="documentType" id="written" value="Handwritten">
                     <label class="form-check-label" for="written">
                       Handwritten
                     </label>
                 </div>
-            </div>
-                <input type="submit" class="btn btn-primary" value="Upload">
-              </form>
+            </div> -->
+            <input type="submit" class="btn btn-primary" value="Upload">
+            </form>
         </div>
       </div>
     </div>
 {% endif %}
+<script>
+  $(document).ready(function(){
+      $("#result b").html($("#customRange").val() + '%');
+      $("#customRange").change(function(){
+          $("#result b").html($(this).val() + '%');
+      });
+  });        
+</script> 
 </section>
 {% endblock %}
