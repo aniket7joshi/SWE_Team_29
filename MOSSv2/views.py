@@ -88,7 +88,6 @@ def upload_files(request):
 		print("{} files received.".format(len(file_list)))
 		print(files)
 		# print("Document type: ", request.POST.get('documentType'))
-		# print("Threshold: ", request.POST.get('threshold'))
 		gensim_similarity_matrix = similarity.check_gensim_similarity(files)
 		# contents = ""
 		# with open('./tests/' + file_list[0]) as f:
@@ -109,12 +108,10 @@ def upload_files(request):
 		# print('*****')
 		# print(files)
 		tf_idf_matrix = similarity.tf_idf_cosine_distance(file_list)
-# <<<<<<< Updated upstream
 # 		print('\nTFIDF mat:\n', tf_idf_matrix)
 # =======
 # 		print('****************** TF IDF **********************')
 # 		print(tf_idf_matrix)
-# >>>>>>> Stashed changes
 		spacy_similarity = similarity.spacy_similarity(file_list)
 		print('****************** SPACY ***********************')
 		print(np.array(spacy_similarity))
@@ -126,25 +123,29 @@ def upload_files(request):
 				# exact.input_all(file_list[i],file_list[j])
 				curr_fuzzy.append(fuzzy.input_all(file_list[i], file_list[j]))
 			all_fuzzy_scores.append(curr_fuzzy)
-# <<<<<<< Updated upstream
 		# similarity.text_difference(file_list)		
 		gen_arr, spacy_arr, fuzzy_arr = np.array(gensim_similarity_matrix), np.array(spacy_similarity), np.array(all_fuzzy_scores)
 		print('\nFuzzy mat:\n', fuzzy_arr)
 		print('\nGenism mat:\n', gen_arr)
 		print('\nSpacy mat:\n', spacy_arr)
-# 	return render(request, "MOSSv2/upload.html", {"msg":"Similarity Scores:",
-# =======
 		print('***************** FUZZY *************************')
 		print(np.array(all_fuzzy_scores))
 		print('***************** text difference ******************')
 		similarity.text_difference(file_list)
 		print('***************** sentence similarity *****************')
 		similarity.check_each_sentence(file_list)		
-	return render(request, "MOSSv2/upload.html", {"msg":"Files Uploaded",
-# >>>>>>> Stashed changes
+	return render(request, "MOSSv2/upload.html", {"msg":"Similarity Scores",
 	"title": "Upload",
 	"file_list": file_list,
 	"tfidf_mat": np.around(tf_idf_matrix, decimals=3),
 	"genism_mat": np.around(gen_arr, decimals=3),
 	"spacy_mat": np.around(spacy_arr, decimals=3),
-	"fuzzy_mat": np.around(fuzzy_arr, decimals=3)})
+	"fuzzy_mat": fuzzy_arr})
+
+
+@login_required
+def check_treshold(request):
+	if request.method == "POST":
+		print("Threshold: ", request.POST.get('threshold'))
+	return render(request, "MOSSv2/results.html", {"title": "Results",
+	})
