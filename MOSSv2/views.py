@@ -6,6 +6,17 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from . import similarity, exact, bloom_filter, aho, fuzzy
 import numpy as np
+import pandas as pd
+import os
+# import json
+# from json import JSONEncoder
+
+# class NumpyEncoder(json.JSONEncoder):
+#     def default(self, obj):
+#         if isinstance(obj, np.ndarray):
+#             return obj.tolist()
+#         return json.JSONEncoder.default(self, obj)
+
 def index(request):
 	return render(request, "MOSSv2/index.html", {"title": "Home"})
 
@@ -133,7 +144,12 @@ def upload_files(request):
 		print('***************** text difference ******************')
 		similarity.text_difference(file_list)
 		print('***************** sentence similarity *****************')
-		similarity.check_each_sentence(file_list)		
+		similarity.check_each_sentence(file_list)
+		write_mat(gen_arr, "gen")
+		write_mat(spacy_arr, "spacy")
+		write_mat(fuzzy_arr, "fuzz")
+		write_mat(tf_idf_matrix, "tfidf")
+		request.session['files'] = file_list
 	return render(request, "MOSSv2/upload.html", {"msg":"Similarity Scores",
 	"title": "Upload",
 	"file_list": file_list,
@@ -147,5 +163,38 @@ def upload_files(request):
 def check_treshold(request):
 	if request.method == "POST":
 		print("Threshold: ", request.POST.get('threshold'))
+		tf_mat, gen_mat = read_mat('tfidf'), read_mat('gen')
+		spacy_mat, fuzzy_mat = read_mat('spacy'), read_mat('fuzz')
+		file_list = request.session['files']
+		thres_fuzzy, thres_other = int(request.POST.get('threshold')), int(request.POST.get('threshold')) / 100
+		op_files, fuzz_score, spacy_score, tfidf_score, gen_score = [], [], [], [], []
+		for i in range(len(file_list)):
+			for j in range(len(file_list) - i):
+				if i == j:
+					continue
+				if fuzzy_mat[i][j] >= thres_fuzzy or spacy_mat[i][j] >= thres_other or gen_mat[i][j] >= thres_other or tf_mat[i][j] >= thres_other:
+					op_files.append((file_list[i], file_list[j]))
+					fuzz_score.append(fuzzy_mat[i][j])
+					spacy_score.append(spacy_mat[i][j])
+					tfidf_score.append(tf_mat[i][j])
+					gen_score.append(gen_mat[i][j])
+		# print(op_files)
+		# print(tfidf_score)	
 	return render(request, "MOSSv2/results.html", {"title": "Results",
-	})
+	"files": op_files,
+	"fuzz": fuzz_score,
+	"spacy": spacy_score,
+	"tf_idf": tfidf_score,
+	"gen": gen_score})
+
+def write_mat(mat, name):
+	path = os.getcwd()
+	print("Path: ", path)
+	df = pd.DataFrame(mat)
+	df.to_csv(path + '/MOSSv2/mats/' + name + '.csv', index = False, header = False)
+
+def read_mat(name):
+	path = os.getcwd()
+	df = pd.read_csv(path + '/MOSSv2/mats/' + name + '.csv', header = None)
+	return np.array(df)
+
