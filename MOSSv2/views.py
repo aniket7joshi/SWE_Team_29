@@ -169,7 +169,7 @@ def check_treshold(request):
 		thres_fuzzy, thres_other = int(request.POST.get('threshold')), int(request.POST.get('threshold')) / 100
 		op_files, fuzz_score, spacy_score, tfidf_score, gen_score = [], [], [], [], []
 		for i in range(len(file_list)):
-			for j in range(len(file_list) - i):
+			for j in range(i,len(file_list)):
 				if i == j:
 					continue
 				if fuzzy_mat[i][j] >= thres_fuzzy or spacy_mat[i][j] >= thres_other or gen_mat[i][j] >= thres_other or tf_mat[i][j] >= thres_other:
