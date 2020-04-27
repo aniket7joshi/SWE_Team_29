@@ -113,6 +113,7 @@ def cluster_documents(pairwise_similarity,no_of_files):
 
 
 def sentence_checker(document1,document2):
+	f = open('result','a+')
 	document1 = nltk.tokenize.sent_tokenize(document1)
 	document2 = nltk.tokenize.sent_tokenize(document2)
 	tfidf_transformer = TfidfVectorizer()
@@ -143,9 +144,31 @@ def text_difference(file_list):
 
 def check_each_sentence(file_list):
 	documents,_= read_files1(file_list)
+	f1 = open('result.txt','a+')
 	for k in range(len(documents)):
 		doc = documents[k]
 		for i in range(len(documents)):
 			print(file_list[k], file_list[i])
 			doc_a = documents[i]
-			sentence_checker(doc, doc_a)
+			document1 = doc
+			document2 = doc_a
+			f1.write('matching sentences between ' + file_list[k] + ' ' + file_list[i] + '\n')
+			document1 = nltk.tokenize.sent_tokenize(document1)
+			document2 = nltk.tokenize.sent_tokenize(document2)
+			tfidf_transformer = TfidfVectorizer()
+			doc1 = tfidf_transformer.fit_transform(document1)
+			doc2 = tfidf_transformer.transform(document2)
+			cosineSimilarities = cosine_similarity(doc1,doc2)
+			# print("This is cosine similarity \n")
+			# print(cosineSimilarities)
+
+			for index in range(len(document1)):
+				for index1 in range(len(document2)):
+					if cosineSimilarities[index][index1] >= 0.5:	
+						# print("The two matching sentences are \n")
+						# print("Sentence 1 : ",document1[index])
+						# print("Sentence 2 : ",document2[index])
+						f1.write('Sentence 1: ' + document1[index] + '\n')
+						f1.write('Sentence 2: ' + document2[index1] + '\n')
+						f1.write('***************\n')
+			f1.write('##################################\n')

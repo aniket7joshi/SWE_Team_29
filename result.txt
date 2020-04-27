@@ -1,0 +1,199 @@
+matching sentences between a.txt a.txt
+Sentence 1: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+Sentence 2: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+***************
+Sentence 1: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+Sentence 2: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+***************
+Sentence 1: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+Sentence 2: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+***************
+Sentence 1: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+Sentence 2: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+***************
+##################################
+matching sentences between a.txt b.txt
+Sentence 1: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+Sentence 2: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+***************
+Sentence 1: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+Sentence 2: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+***************
+Sentence 1: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+Sentence 2: The young prodigy, barely old enough to receive his man-of-the-match champagne, ended the tournament with 398 runs from 7 outings with two centuries and two fifties, ensuring that he remained fresh in the selectors' minds.
+***************
+Sentence 1: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+Sentence 2: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+***************
+Sentence 1: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+Sentence 2: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+
+The 20-year-old continued to impress for Delhi and dominated attacks, clearly demonstrating that he belonged at a much higher level; that junior cricket was beneath his standards.
+***************
+##################################
+matching sentences between a.txt e.txt
+##################################
+matching sentences between a.txt c.txt
+Sentence 1: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+Sentence 2: “Maybe they’ve got more motivation to keep going now, as they can see when they’re back they may be on the same level or even a better level physically.
+***************
+Sentence 1: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+Sentence 2: Despite a season of huge frustration at long inactivity, Pogba has rarely found himself out of the news and his put-down of his fiercest critic – Scottish firebrand Graeme Souness – is the amusing story of the week you simply have to read.
+***************
+Sentence 1: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+Sentence 2: “Paul and Marcus [Rashford] have been out, now we’ve still got games left, and I think everyone in the league will start more or less on the same level,” Solskjaer told Sky Sports.
+***************
+##################################
+matching sentences between a.txt d.txt
+##################################
+matching sentences between b.txt a.txt
+Sentence 1: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+Sentence 2: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+***************
+Sentence 1: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+Sentence 2: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+***************
+Sentence 1: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+Sentence 2: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+***************
+Sentence 1: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+
+The 20-year-old continued to impress for Delhi and dominated attacks, clearly demonstrating that he belonged at a much higher level; that junior cricket was beneath his standards.
+Sentence 2: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+***************
+##################################
+matching sentences between b.txt b.txt
+Sentence 1: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+Sentence 2: He soon joined the senior Men in Blue in Sri Lanka, come August 2008.
+***************
+Sentence 1: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+Sentence 2: In the absence of the regular openers, Virat Kohli was given a chance to open the batting in the ODI series.
+***************
+Sentence 1: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+Sentence 2: He played some commendable knocks in his extended run as an opener, as India went on to win the ODI series.
+***************
+Sentence 1: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+
+The 20-year-old continued to impress for Delhi and dominated attacks, clearly demonstrating that he belonged at a much higher level; that junior cricket was beneath his standards.
+Sentence 2: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+
+The 20-year-old continued to impress for Delhi and dominated attacks, clearly demonstrating that he belonged at a much higher level; that junior cricket was beneath his standards.
+***************
+Sentence 1: Kohli then traveled to Australia in 2009 for the Emerging players tournament and stamped his authority all over the bowling attacks.
+Sentence 2: Kohli then traveled to Australia in 2009 for the Emerging players tournament and stamped his authority all over the bowling attacks.
+***************
+Sentence 1: He added 'big-match temperament' to his résumé too, lacing a fluent hundred in the final against South Africa, and guiding his team to a clinical victory.
+Sentence 2: He added 'big-match temperament' to his résumé too, lacing a fluent hundred in the final against South Africa, and guiding his team to a clinical victory.
+***************
+Sentence 1: The young prodigy, barely old enough to receive his man-of-the-match champagne, ended the tournament with 398 runs from 7 outings with two centuries and two fifties, ensuring that he remained fresh in the selectors' minds.
+Sentence 2: The young prodigy, barely old enough to receive his man-of-the-match champagne, ended the tournament with 398 runs from 7 outings with two centuries and two fifties, ensuring that he remained fresh in the selectors' minds.
+***************
+##################################
+matching sentences between b.txt e.txt
+##################################
+matching sentences between b.txt c.txt
+##################################
+matching sentences between b.txt d.txt
+##################################
+matching sentences between e.txt a.txt
+##################################
+matching sentences between e.txt b.txt
+##################################
+matching sentences between e.txt e.txt
+Sentence 1: A spunky, chubby teenager with gelled hair shot to fame after leading India to glory in the Under-19 World Cup at Kuala Lumpur in early 2008.
+Sentence 2: A spunky, chubby teenager with gelled hair shot to fame after leading India to glory in the Under-19 World Cup at Kuala Lumpur in early 2008.
+***************
+Sentence 1: In an Indian team filled with saint-like icons worthy of their own hagiographies, Virat Kohli, with his most un-Indian, 'bad-boy' intensity, would clearly be an outcast.
+Sentence 2: In an Indian team filled with saint-like icons worthy of their own hagiographies, Virat Kohli, with his most un-Indian, 'bad-boy' intensity, would clearly be an outcast.
+***************
+##################################
+matching sentences between e.txt c.txt
+##################################
+matching sentences between e.txt d.txt
+##################################
+matching sentences between c.txt a.txt
+Sentence 1: Despite a season of huge frustration at long inactivity, Pogba has rarely found himself out of the news and his put-down of his fiercest critic – Scottish firebrand Graeme Souness – is the amusing story of the week you simply have to read.
+Sentence 2: However, the established and formidable pair of Tendulkar and Sehwag kept Kohli out of the team
+***************
+##################################
+matching sentences between c.txt b.txt
+##################################
+matching sentences between c.txt e.txt
+##################################
+matching sentences between c.txt c.txt
+Sentence 1: Wonderful Manchester United midfielder Paul Pogba enjoys scoring for his club.
+Sentence 2: Wonderful Manchester United midfielder Paul Pogba enjoys scoring for his club.
+***************
+Sentence 1: Paul Pogba will be convinced to stay at Manchester United and sign an extension to his contract, one pundit has insisted.
+Sentence 2: Paul Pogba will be convinced to stay at Manchester United and sign an extension to his contract, one pundit has insisted.
+***************
+Sentence 1: Despite a season of huge frustration at long inactivity, Pogba has rarely found himself out of the news and his put-down of his fiercest critic – Scottish firebrand Graeme Souness – is the amusing story of the week you simply have to read.
+Sentence 2: Despite a season of huge frustration at long inactivity, Pogba has rarely found himself out of the news and his put-down of his fiercest critic – Scottish firebrand Graeme Souness – is the amusing story of the week you simply have to read.
+***************
+Sentence 1: The player continues to be strongly linked with a return to previous club Juventus or Spanish giants Real Madrid and while Pogba himself has not commented on his future, he has received some recent words of encouragement from his manager, Ole Gunnar Solskjaer.
+Sentence 2: The player continues to be strongly linked with a return to previous club Juventus or Spanish giants Real Madrid and while Pogba himself has not commented on his future, he has received some recent words of encouragement from his manager, Ole Gunnar Solskjaer.
+***************
+Sentence 1: “Paul and Marcus [Rashford] have been out, now we’ve still got games left, and I think everyone in the league will start more or less on the same level,” Solskjaer told Sky Sports.
+Sentence 2: “Paul and Marcus [Rashford] have been out, now we’ve still got games left, and I think everyone in the league will start more or less on the same level,” Solskjaer told Sky Sports.
+***************
+Sentence 1: “Maybe they’ve got more motivation to keep going now, as they can see when they’re back they may be on the same level or even a better level physically.
+Sentence 2: “Maybe they’ve got more motivation to keep going now, as they can see when they’re back they may be on the same level or even a better level physically.
+***************
+Sentence 1: “In a way, they have got an opportunity here to play a bigger part in this season than they had hoped.
+Sentence 2: “In a way, they have got an opportunity here to play a bigger part in this season than they had hoped.
+***************
+Sentence 1: “And they are big players for us, some of the most important players.” Despite ongoing speculation suggesting he may have played his last game for the club, Sky Sports’ Spanish football expert Guillem Balague believes the player will not only stay at Old Trafford, but he will commit to a new contract to extend his second spell at the club.
+Sentence 2: “And they are big players for us, some of the most important players.” Despite ongoing speculation suggesting he may have played his last game for the club, Sky Sports’ Spanish football expert Guillem Balague believes the player will not only stay at Old Trafford, but he will commit to a new contract to extend his second spell at the club.
+***************
+Sentence 1: “Real Madrid I don’t think have Paul Pogba as a priority,” the reporter said in a YouTube video.
+Sentence 2: “Real Madrid I don’t think have Paul Pogba as a priority,” the reporter said in a YouTube video.
+***************
+Sentence 1: “Paul Pogba has suggested both, that he wants to go and he wants to stay.
+Sentence 2: “Paul Pogba has suggested both, that he wants to go and he wants to stay.
+***************
+Sentence 1: “So he’s playing his cards but at the moment I do feel that a player like him would be better serviced to be at Manchester United where he will be the leader.
+Sentence 2: “So he’s playing his cards but at the moment I do feel that a player like him would be better serviced to be at Manchester United where he will be the leader.
+***************
+##################################
+matching sentences between c.txt d.txt
+Sentence 1: Wonderful Manchester United midfielder Paul Pogba enjoys scoring for his club.
+Sentence 2: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+***************
+##################################
+matching sentences between d.txt a.txt
+##################################
+matching sentences between d.txt b.txt
+##################################
+matching sentences between d.txt e.txt
+##################################
+matching sentences between d.txt c.txt
+Sentence 1: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+Sentence 2: Wonderful Manchester United midfielder Paul Pogba enjoys scoring for his club.
+***************
+Sentence 1: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+Sentence 2: Paul Pogba will be convinced to stay at Manchester United and sign an extension to his contract, one pundit has insisted.
+***************
+Sentence 1: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+Sentence 2: Despite a season of huge frustration at long inactivity, Pogba has rarely found himself out of the news and his put-down of his fiercest critic – Scottish firebrand Graeme Souness – is the amusing story of the week you simply have to read.
+***************
+Sentence 1: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+Sentence 2: “And they are big players for us, some of the most important players.” Despite ongoing speculation suggesting he may have played his last game for the club, Sky Sports’ Spanish football expert Guillem Balague believes the player will not only stay at Old Trafford, but he will commit to a new contract to extend his second spell at the club.
+***************
+Sentence 1: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+Sentence 2: “So he’s playing his cards but at the moment I do feel that a player like him would be better serviced to be at Manchester United where he will be the leader.
+***************
+##################################
+matching sentences between d.txt d.txt
+Sentence 1: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+Sentence 2: Manchester United midfielder Paul Pogba is reportedly set to extend his stay at the club.
+***************
+Sentence 1: The player who joined Man United in 2016 from Italian giants Juventus has been linked with a move away from Old Trafford.
+Sentence 2: The player who joined Man United in 2016 from Italian giants Juventus has been linked with a move away from Old Trafford.
+***************
+Sentence 1: Real Madrid and Juventus were considered as the likely destinations for the France international.
+Sentence 2: Real Madrid and Juventus were considered as the likely destinations for the France international.
+***************
+Sentence 1: Paul Pogba loves scoring goals.
+Sentence 2: Paul Pogba loves scoring goals.
+***************
+##################################
