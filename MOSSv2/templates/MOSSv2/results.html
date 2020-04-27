@@ -1,0 +1,82 @@
+{% extends 'MOSSv2/base.html' %}
+{% block body_block %}
+{% load index %}
+<section data-aos="fade-up" data-aos-delay="100" style="background-color: whitesmoke; border-radius: 5px; max-width: 80%; z-index: 10; max-height: 500px; overflow-y: scroll;">
+    <div style="color: green; font-family: 'Poppins', sans-serif;">{{msg}}</div>
+        <div class = "" style="min-width: 500px;">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>File 1</th>
+                        <th>File 2</th>
+                        <th>Genism</th>
+                        <th>Cosine</th>
+                        <th>Spacy</th>
+                        <th>Fuzzy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in files%}
+                    <tr>
+                        <td>{{file.0}}</td>
+                        <td>{{file.1}}</td>
+                        <td>{{ fuzz|index:forloop.counter0 }}</td>
+                        <td>{{ spacy|index:forloop.counter0 }}</td>
+                        <td>{{ tf_idf|index:forloop.counter0 }}</td>
+                        <td>{{ gen|index:forloop.counter0 }}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+                <!-- <tfoot>
+                    <tr>
+                        <th>File 1</th>
+                        <th>File 2</th>
+                        <th>Genism</th>
+                        <th>Cosine</th>
+                        <th>Spacy</th>
+                        <th>Fuzzy</th>
+                    </tr>
+                </tfoot> -->
+            </table>
+        </div>
+        </div>
+<script>
+  $(document).ready(function(){
+      $("#result b").html($("#customRange").val() + '%');
+      $("#customRange").change(function(){
+          $("#result b").html($(this).val() + '%');
+      });
+  });   
+  function show1(){
+  document.getElementById('div1').style.display ='block';
+  document.getElementById('div2').style.display = 'none';
+  document.getElementById('div3').style.display = 'none';
+  document.getElementById('div4').style.display = 'none';
+
+} 
+  function show2(){
+    document.getElementById('div1').style.display = 'none';
+    document.getElementById('div2').style.display = 'block';
+    document.getElementById('div3').style.display = 'none';
+    document.getElementById('div4').style.display = 'none';
+  }
+  function show3(){
+    document.getElementById('div1').style.display = 'none';
+    document.getElementById('div2').style.display = 'none';
+    document.getElementById('div3').style.display = 'block';
+    document.getElementById('div4').style.display = 'none';
+  }
+  function show4(){
+    document.getElementById('div1').style.display = 'none';
+    document.getElementById('div2').style.display = 'none';
+    document.getElementById('div3').style.display = 'none';
+    document.getElementById('div4').style.display = 'block';
+  }     
+</script> 
+</section>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+{% endblock %}
